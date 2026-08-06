@@ -1,71 +1,266 @@
-<<<<<<< HEAD
-# Customer Churn Dashboard
+# 📊 Customer Churn Prediction Analytics Dashboard
 
-A small end-to-end project: predict which customers are likely to cancel, and surface that in a dashboard the customer success team can actually use.
+A complete **Customer Churn Prediction & Analytics Dashboard** that combines **Machine Learning** and **Interactive Data Visualization** to help businesses identify customers who are likely to churn and understand the key factors influencing customer retention.
 
-It's built around the [Telco Customer Churn dataset](https://www.kaggle.com/datasets/blastchar/telco-customer-churn) as a stand-in for real production data - swap `training/Telco-Customer-Churn.csv` for an export from your own CRM/billing system and the rest of the pipeline doesn't need to change.
+This project demonstrates the complete data science workflow—from data preprocessing and exploratory data analysis (EDA) to predictive modeling and business intelligence dashboard creation.
 
-## What's in here
+---
 
-- `training/train_churn_model.py` - cleans the data, tunes Logistic Regression / Random Forest / XGBoost with GridSearchCV, picks the best one, and optimizes the classification threshold instead of just defaulting to 0.5
-- `api/index.py` - FastAPI service that reads the model's output and serves it as JSON (KPIs, filtered customer lists, per-customer detail)
-- `src/App.jsx` - the dashboard itself (React + Tailwind + Recharts)
-- `.github/workflows/retrain.yml` - retrains the model weekly on GitHub Actions and commits the refreshed scores, which triggers Vercel to redeploy
+## 📌 Project Overview
 
-## Why it's built this way
+Customer retention is significantly more cost-effective than acquiring new customers. This project leverages machine learning techniques to predict customer churn and presents actionable insights through an interactive analytics dashboard.
 
-The training job needs a minute or two to run (GridSearchCV over three models), which is too long for a Vercel serverless function. Rather than standing up a server that runs 24/7 just to retrain once a week, the retraining happens on GitHub Actions instead, and the result - a CSV of risk scores - gets committed back to the repo. Vercel picks up the push and redeploys with fresh data. No database, no queue, no always-on compute. It's not the architecture you'd want at a much bigger scale, but for a dataset this size it's simpler and cheaper than the alternative, not a shortcut.
+The dashboard enables business stakeholders to:
 
-## Running it locally
+* Identify customers at high risk of churn
+* Analyze churn trends across different customer segments
+* Understand important factors affecting churn
+* Support data-driven retention strategies
 
-You'll need Node 18+ and Python 3.11+.
+---
+
+## 🚀 Features
+
+* ✅ Data Cleaning & Preprocessing
+* ✅ Exploratory Data Analysis (EDA)
+* ✅ Feature Engineering
+* ✅ Customer Segmentation
+* ✅ Machine Learning Model for Churn Prediction
+* ✅ Model Evaluation & Performance Metrics
+* ✅ Interactive Analytics Dashboard
+* ✅ Business Insights & Recommendations
+
+---
+
+## 🛠️ Tech Stack
+
+### Programming Languages
+
+* Python
+
+### Libraries
+
+* Pandas
+* NumPy
+* Matplotlib
+* Seaborn
+* Scikit-learn
+
+### Dashboard & Visualization
+
+* Power BI / Tableau *(Update based on your project)*
+
+### Development Tools
+
+* Jupyter Notebook
+* Git
+* GitHub
+
+---
+
+## 📂 Project Structure
+
+```text
+Customer-Churn-Prediction-Analytics-Dashboard
+│
+├── data/
+│   ├── raw_data.csv
+│   └── processed_data.csv
+│
+├── notebooks/
+│   ├── Data_Preprocessing.ipynb
+│   ├── EDA.ipynb
+│   └── Model_Training.ipynb
+│
+├── dashboard/
+│   └── Customer_Churn_Dashboard.pbix
+│
+├── models/
+│   └── churn_prediction_model.pkl
+│
+├── images/
+│   ├── dashboard.png
+│   ├── churn_distribution.png
+│   └── feature_importance.png
+│
+├── requirements.txt
+├── README.md
+└── LICENSE
+```
+
+---
+
+## 📊 Dataset
+
+The project uses the **Telco Customer Churn Dataset**, which contains customer demographic information, account details, subscribed services, billing information, and churn status.
+
+### Dataset Features
+
+* Gender
+* Senior Citizen
+* Partner
+* Dependents
+* Tenure
+* Phone Service
+* Internet Service
+* Online Security
+* Tech Support
+* Contract Type
+* Payment Method
+* Monthly Charges
+* Total Charges
+* Churn
+
+---
+
+## 🔍 Exploratory Data Analysis
+
+The following analyses were performed:
+
+* Customer demographic analysis
+* Churn distribution
+* Contract-wise churn analysis
+* Payment method analysis
+* Monthly charges analysis
+* Tenure distribution
+* Correlation analysis
+* Feature importance visualization
+
+---
+
+## 🤖 Machine Learning Pipeline
+
+1. Data Collection
+2. Data Cleaning
+3. Feature Encoding
+4. Feature Scaling
+5. Train-Test Split
+6. Model Training
+7. Model Evaluation
+8. Prediction
+9. Dashboard Visualization
+
+---
+
+## 📈 Model Evaluation
+
+The model was evaluated using:
+
+* Accuracy
+* Precision
+* Recall
+* F1-Score
+* ROC-AUC Score
+* Confusion Matrix
+
+---
+
+## 📊 Dashboard Highlights
+
+The analytics dashboard includes:
+
+* Overall Churn Rate
+* Active vs Churned Customers
+* Monthly Revenue Analysis
+* Customer Segmentation
+* Contract Type Analysis
+* Payment Method Distribution
+* Internet Service Analysis
+* Customer Lifetime Value
+* High-Risk Customer Identification
+* Interactive Filters & Slicers
+
+---
+
+## 💡 Business Insights
+
+* Customers with month-to-month contracts show higher churn rates.
+* Long-tenure customers are less likely to churn.
+* Higher monthly charges are associated with increased churn risk.
+* Customers without additional support services are more likely to leave.
+* Contract type and tenure are among the strongest predictors of churn.
+
+---
+
+## 📷 Dashboard Preview
+
+> Add screenshots inside the **images/** folder and update the paths below.
+
+```markdown
+![Dashboard](images/dashboard.png)
+
+![Feature Importance](images/feature_importance.png)
+
+![Churn Distribution](images/churn_distribution.png)
+```
+
+---
+
+## ⚙️ Installation
+
+Clone the repository:
 
 ```bash
-# install everything
-npm install
+git clone https://github.com/potladeepak49-arch/Customer-Churn-Prediction-Analytics-Dashboard.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd Customer-Churn-Prediction-Analytics-Dashboard
+```
+
+Install dependencies:
+
+```bash
 pip install -r requirements.txt
-
-# terminal 1 - the API
-uvicorn api.index:app --reload --port 3000
-
-# terminal 2 - the dashboard
-npm run dev
 ```
 
-Dashboard's at `http://localhost:5173`, API at `http://localhost:3000`. The Vite dev server proxies `/api` calls to port 3000 automatically (see `vite.config.js` if you need to change the port).
-
-### Retraining locally
+Launch Jupyter Notebook:
 
 ```bash
-cd training
-pip install -r requirements.txt
-python train_churn_model.py --data Telco-Customer-Churn.csv --out ../data/risk_scores.csv --metrics_out ../data/model_metrics.json
+jupyter notebook
 ```
 
-You can also tune the model toward a specific recall target instead of the default (best F1):
+---
 
-```bash
-python train_churn_model.py --target_recall 0.85
-```
+## 📌 Future Enhancements
 
-That's useful if the customer success team can only realistically reach out to, say, a few hundred accounts a week - you can dial the threshold to match capacity instead of accepting whatever the default gives you.
+* Deploy using Streamlit or Flask
+* Hyperparameter Optimization
+* Deep Learning Models
+* Real-time Prediction API
+* Cloud Deployment (AWS/Azure)
+* Automated Model Retraining
+* Explainable AI (SHAP/LIME)
 
-## Deploying
+---
 
-Push to GitHub, then import the repo on [vercel.com](https://vercel.com) with the Vite preset. That's genuinely it - `vercel.json` handles routing `/api/*` to the Python function, and the GitHub Actions workflow is already scheduled for Mondays at 06:00 UTC (also runnable manually from the Actions tab).
+## 🎯 Learning Outcomes
 
-Full details in `DEPLOYMENT.md`.
+Through this project, I gained practical experience in:
 
-## Known limitations
+* Data Cleaning
+* Feature Engineering
+* Exploratory Data Analysis
+* Machine Learning
+* Predictive Analytics
+* Dashboard Development
+* Business Intelligence
+* Model Evaluation
+* Data Storytelling
 
-- The Telco dataset doesn't include login frequency or support ticket history, which the original spec called for - if you're working from real usage/support data those fields would meaningfully improve the model
-- Risk scores update once a week; there's no real-time scoring path here
-- The dashboard's customer list loads everything through a couple of API calls - fine at ~7K customers, would need actual pagination-aware indexing at much larger scale
+---
 
-## License
+## 🤝 Contributing
 
-MIT - do what you want with it.
-=======
-# Customer-Churn-Prediction-Analytics-Dashboard
-End-to-end churn prediction system: tuned ML model (XGBoost, GridSearchCV) with threshold optimization, serving a live dashboard for identifying and prioritizing at-risk customers
->>>>>>> 2b8bd48903d343d9e12c277dd996812c4f906abf
+Contributions, suggestions, and improvements are welcome.
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push the branch
+5. Open a Pull Request
+
+---
+
