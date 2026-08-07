@@ -186,15 +186,18 @@ The analytics dashboard includes:
 
 > Add screenshots inside the **images/** folder and update the paths below.
 
-```markdown
-![Dashboard](<img width="736" height="508" alt="image" src="https://github.com/user-attachments/assets/87b5c06b-596a-4afb-a0a3-f4f81d2c2933" />
-)
 
-![Feature Importance](<img width="808" height="619" alt="image" src="https://github.com/user-attachments/assets/0a2b25c6-8441-44f2-aebc-0ce83ec30699" />
-)
+## Dashboard
 
-![Churn Distribution](<img width="513" height="354" alt="image" src="https://github.com/user-attachments/assets/67c7d52e-8429-45e1-8668-b587b42f2625" />
-)
+![Dashboard]([https://github.com/user-attachments/assets/87b5c06b-596a-4afb-a0a3-f4f81d2c2933](https://github.com/potladeepak49-arch/Customer-Churn-Prediction-Analytics-Dashboard/blob/main/images/dashboard.png))
+
+## Feature Importance
+
+![Feature Importance]([https://github.com/user-attachments/assets/0a2b25c6-8441-44f2-aebc-0ce83ec30699](https://github.com/potladeepak49-arch/Customer-Churn-Prediction-Analytics-Dashboard/blob/main/images/feature_importance.png))
+
+## Churn Distribution
+
+![Churn Distribution]([https://github.com/user-attachments/assets/67c7d52e-8429-45e1-8668-b587b42f2625](https://github.com/potladeepak49-arch/Customer-Churn-Prediction-Analytics-Dashboard/blob/main/images/churn_distribution.png))
 ```
 
 ---
