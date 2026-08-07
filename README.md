@@ -187,11 +187,14 @@ The analytics dashboard includes:
 > Add screenshots inside the **images/** folder and update the paths below.
 
 ```markdown
-![Dashboard](images/dashboard.png)
+![Dashboard](<img width="736" height="508" alt="image" src="https://github.com/user-attachments/assets/87b5c06b-596a-4afb-a0a3-f4f81d2c2933" />
+)
 
-![Feature Importance](images/feature_importance.png)
+![Feature Importance](<img width="808" height="619" alt="image" src="https://github.com/user-attachments/assets/0a2b25c6-8441-44f2-aebc-0ce83ec30699" />
+)
 
-![Churn Distribution](images/churn_distribution.png)
+![Churn Distribution](<img width="513" height="354" alt="image" src="https://github.com/user-attachments/assets/67c7d52e-8429-45e1-8668-b587b42f2625" />
+)
 ```
 
 ---
